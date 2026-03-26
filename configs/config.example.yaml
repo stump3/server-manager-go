@@ -1,1 +1,27 @@
+# server-manager configuration file
+# Copy to ~/.config/server-manager/config.yaml and edit as needed.
+# All fields are optional — defaults shown below are used when absent.
+# Environment variables override file values: SM_LOG_LEVEL=debug etc.
 
+# Log verbosity: debug | info | warn | error
+log_level: info
+
+# SSH connection settings used for all remote operations (migration etc.)
+ssh:
+  # How often to send SSH keepalive packets (seconds).
+  # Prevents TCP timeout during long operations like pg_dumpall.
+  keepalive_interval: 15
+
+  # Disconnect after this many consecutive keepalive failures.
+  keepalive_max_count: 3
+
+  # Timeout for the initial TCP connection (seconds).
+  connect_timeout: 15
+
+# Panel installation defaults
+panel:
+  # Directory where Remnawave Panel is installed.
+  dir: /opt/remnawave
+
+  # Path to the panel management script installed alongside the panel.
+  mgmt_script: /usr/local/bin/remnawave_panel
